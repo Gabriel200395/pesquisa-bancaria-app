@@ -1,7 +1,8 @@
 import axios from "axios";
 import React from "react";
 import trasactionsProps from "./Interface/Interface";
-import {thArr, tdArr, selectOption}  from "./Arrays/Arrays"
+import { thArr, tdArr, selectOption } from "./Arrays/Arrays";
+import { couldStartTrivia } from "typescript";
 
 function App() {
   const [trasactions, setTrasactions] = React.useState<trasactionsProps[]>([]);
@@ -10,6 +11,7 @@ function App() {
   >([]);
   const [filtro, setFiltro] = React.useState("");
   const [select, setSelect] = React.useState("");
+  const [disabled, setDisabled] = React.useState<boolean>(false);
 
   React.useEffect(() => {
     async function req() {
@@ -38,7 +40,14 @@ function App() {
           .includes(event.target.value.toLocaleLowerCase().toLocaleUpperCase())
       )
     );
-    setTrasactions(trasactions);
+
+    if (filtro && trasactionsFiltro.length < 21) {
+      setDisabled(false);
+    }
+
+    if (trasactionsFiltro.map((e) => e.title === filtro)) {
+      setDisabled(false);
+    }
   };
 
   function handleChangeSelect(event: React.ChangeEvent<HTMLSelectElement>) {
@@ -53,15 +62,25 @@ function App() {
             .includes(filtro.toLocaleLowerCase().toLocaleUpperCase())
       )
     );
+
+    setDisabled(true);
   }
 
   React.useEffect(() => {
     if (trasactionsFiltro.length == 0) {
       setTrasactionsFiltro(trasactions);
     }
+    if (trasactionsFiltro.length == 21) {
+      setDisabled(true);
+      setSelect("status");
+    }
+    if (filtro && trasactionsFiltro.length == 21) {
+      setDisabled(false);
+    }
   }, [trasactionsFiltro]);
 
-  
+  console.log(trasactionsFiltro);
+
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-light bg-light mb-5 py-4">
@@ -90,7 +109,7 @@ function App() {
               aria-label="select-status"
               value={select}
               onChange={handleChangeSelect}
-              disabled={filtro ? false : true}
+              disabled={disabled ? true : false}
             >
               {selectOption.map((op) => (
                 <option key={op} value={op}>

@@ -44,7 +44,12 @@ describe("testando app", () => {
     });
 
     expect(Input.value).toEqual("Resgate"); 
-    expect(Select).not.toHaveAttribute("disabled")
+    expect(Select).not.toHaveAttribute("disabled") 
+
+    fireEvent.change(Input, { target: { value: "resgated" } });
+    expect(Input.value).toEqual("resgated")
+    expect(Select).toHaveProperty("disabled")
+
   });
 
   test("verificando requisicao", async () => {
@@ -81,4 +86,7 @@ describe("testando app", () => {
     await waitFor(() => expect(screen.getByTestId("tr-transacao")).toHaveTextContent(dataTransacao[0].status));
 
   });
+
+
+
 });
