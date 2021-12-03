@@ -30,7 +30,7 @@ describe("testando app", () => {
     }) as HTMLInputElement;
 
     const Select = screen.getByRole("combobox", {
-      name: /select-desabilitado/,
+      name: /select-status/,
     }) as HTMLSelectElement; 
 
 
@@ -70,7 +70,7 @@ describe("testando app", () => {
     }) as HTMLInputElement;
 
     const Select = screen.getByRole("combobox", {
-      name: /select-desabilitado/,
+      name: /select-status/,
     }) as HTMLSelectElement; 
 
    

@@ -1,6 +1,7 @@
 import axios from "axios";
 import React from "react";
 import trasactionsProps from "./Interface/Interface";
+import {thArr, tdArr, selectOption}  from "./Arrays/Arrays"
 
 function App() {
   const [trasactions, setTrasactions] = React.useState<trasactionsProps[]>([]);
@@ -20,7 +21,7 @@ function App() {
         setTrasactions(response.data);
         setTrasactionsFiltro(response.data);
       } catch (e) {
-        console.log(e)
+        console.log(e);
       }
     }
 
@@ -60,6 +61,7 @@ function App() {
     }
   }, [trasactionsFiltro]);
 
+  
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-light bg-light mb-5 py-4">
@@ -83,42 +85,35 @@ function App() {
             />
           </div>
           <div className="col-2">
-              <select
-                className="form-select col-3"
-                aria-label="select-desabilitado"
-                value={select}
-                onChange={handleChangeSelect}
-                disabled={filtro ? false : true}
-              >
-                <option>status</option>
-                <option value="created">created</option>
-                <option value="processed">processed</option>
-                <option value="processing">processing</option>
-              </select>
-            
+            <select
+              className="form-select col-3"
+              aria-label="select-status"
+              value={select}
+              onChange={handleChangeSelect}
+              disabled={filtro ? false : true}
+            >
+              {selectOption.map((op) => (
+                <option key={op} value={op}>
+                  {op}
+                </option>
+              ))}
+            </select>
           </div>
         </div>
         <table className="table table-striped">
           <thead>
             <tr className="">
-              <th scope="col">Titulo</th>
-              <th scope="col">Descrição</th>
-              <th scope="col">Status</th>
-              <th scope="col">Valor</th>
+              {thArr.map((th) => (
+                <th key={th}>{th}</th>
+              ))}
             </tr>
           </thead>
           <tbody>
             {trasactionsFiltro.map((t) => (
               <tr key={t.id} data-testid="tr-transacao">
-                <td>{t.title}</td>
-                <td>{t.description}</td>
-                <td>{t.status}</td>
-                <td>
-                  {t.amount.toLocaleString("pt-BR", {
-                    style: "currency",
-                    currency: "BRL",
-                  })}
-                </td>
+                {tdArr.map((td) => (
+                  <td key={t[td]}>{t[td]}</td>
+                ))}
               </tr>
             ))}
           </tbody>

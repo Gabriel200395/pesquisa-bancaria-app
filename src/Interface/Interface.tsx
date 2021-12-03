@@ -8,4 +8,5 @@ export default interface trasactionsProps {
     to: string;
     id: string;
     amount: number;
+    [key: string]: string | number;   
   }
