@@ -5,13 +5,15 @@ import App from "./App";
 jest.mock("axios");
 const mockedAxios = axios as jest.Mocked<typeof axios>;
 
-const dataTransacao = {
-  id: "5f89f9f257fe42957bf6dbfd",
-  title: "Resgate",
-  description: "et labore proident aute nulla",
-  status: "created",
-  amount: 2078.66,
-};
+const dataTransacao = [
+  {
+    id: "5f89f9f257fe42957bf6dbfd",
+    title: "Resgate",
+    description: "et labore proident aute nulla",
+    status: "created",
+    amount: 2078.66,
+  },
+];
 
 describe("testando app", () => {
   test("titulo logo navbar", () => {
@@ -21,14 +23,16 @@ describe("testando app", () => {
     ).toBeInTheDocument();
   });
 
-  test("input vazio e select desabilitado e verificando change input", () => {
+  test("verificando campos input e select", () => {
     render(<App />);
     const Input = screen.getByRole("textbox", {
-      name: /titulo-transaca/i,
+      name: /titulo-transacao/i,
     }) as HTMLInputElement;
+
     const Select = screen.getByRole("combobox", {
       name: /select-desabilitado/,
-    }) as HTMLSelectElement;
+    }) as HTMLSelectElement; 
+
 
     expect(Input.value).toEqual("");
     expect(Select).toBeInTheDocument();
@@ -39,7 +43,8 @@ describe("testando app", () => {
       },
     });
 
-    expect(Input.value).toEqual("Resgate");
+    expect(Input.value).toEqual("Resgate"); 
+    expect(Select).not.toHaveAttribute("disabled")
   });
 
   test("verificando requisicao", async () => {
@@ -51,5 +56,29 @@ describe("testando app", () => {
     await waitFor(() =>
       expect(screen.getByTestId("tr-transacao")).toBeInTheDocument()
     );
+  });
+
+  test("pesquisa title", async () => {
+    mockedAxios.get.mockImplementation(() =>
+      Promise.resolve({ data: dataTransacao })
+    );
+
+    render(<App />);
+
+    const Input = screen.getByRole("textbox", {
+      name: /titulo-transacao/i,
+    }) as HTMLInputElement;
+
+    const Select = screen.getByRole("combobox", {
+      name: /select-desabilitado/,
+    }) as HTMLSelectElement; 
+
+   
+    fireEvent.change(Input, { target: { value: "Resgate" } });
+    await waitFor(() => expect(screen.getByTestId("tr-transacao")).toHaveTextContent(dataTransacao[0].title));
+     
+    fireEvent.click(Select, { target: { value: "created" } })
+    await waitFor(() => expect(screen.getByTestId("tr-transacao")).toHaveTextContent(dataTransacao[0].status));
+
   });
 });

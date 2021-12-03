@@ -83,32 +83,19 @@ function App() {
             />
           </div>
           <div className="col-2">
-            {filtro ? (
-              <select
-                className="form-select col-3"
-                aria-label="select-habilitado"
-                value={select}
-                onChange={handleChangeSelect}
-              >
-                <option>status</option>
-                <option value="created">created</option>
-                <option value="processed">processed</option>
-                <option value="processing">processing</option>
-              </select>
-            ) : (
               <select
                 className="form-select col-3"
                 aria-label="select-desabilitado"
                 value={select}
                 onChange={handleChangeSelect}
-                disabled
+                disabled={filtro ? false : true}
               >
                 <option>status</option>
                 <option value="created">created</option>
                 <option value="processed">processed</option>
                 <option value="processing">processing</option>
               </select>
-            )}
+            
           </div>
         </div>
         <table className="table table-striped">
