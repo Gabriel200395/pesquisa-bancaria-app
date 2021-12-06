@@ -90,10 +90,10 @@ function App() {
       </nav>
       <div className="container">
         <div className="row mb-5">
-          <div className="col-4">
+          <div className="col-lg-4 col-sm-12 mb-sm-4">
             <input
               type="text"
-              className="form-control col-3"
+              className="form-control col-3 col-sm-12"
               placeholder="pesquise por tiulo"
               aria-label="titulo-transacao"
               aria-describedby="basic-addon1"
@@ -101,7 +101,7 @@ function App() {
               onChange={handleChange}
             />
           </div>
-          <div className="col-2">
+          <div className="col-lg-2 col-sm-12">
             <select
               className="form-select col-3"
               aria-label="select-status"
