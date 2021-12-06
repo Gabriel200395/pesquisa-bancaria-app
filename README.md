@@ -1,4 +1,4 @@
-<h1 align="center">Jogos Loterias</h1>  
+<h1 align="center">App de Pesquisa Bancaria</h1>  
 
 <h4 align="center">
   <img src="./public/img/jogos_loterias.gif"/><br>
@@ -15,14 +15,15 @@
 <!--EXEMPLO:-->
 - [React](https://pt-br.reactjs.org/)
 - [Axios](https://www.npmjs.com/package/axios)
-- [Typescript](https://www.typescriptlang.org/)
+- [Typescript](https://www.typescriptlang.org/) 
+- [React-library](https://testing-library.com/docs/react-testing-library/api/)
 
 ## 💻 Como usar
 
-- Clone o projeto: `git clone https://github.com/Gabriel200395/resultados-loterias.git`
-- Entrar na pasta do projeto: `cd resultados-loterias`
-- Iniciar a aplicação: `npm start`
-- baixe na aplicação: `npm install`
+- Clone o projeto: `git clone https://github.com/Gabriel200395/pesquisa-bancaria-app.git`
+- Entrar na pasta do projeto: `cd pesquisa-bancaria-app`
+- Iniciar a aplicação: `yarn start`
+- baixe na aplicação:  yarn install`
 
 
 Irá abrir uma página no browser (se não abrir, vá até [http://localhost:3000](http://localhost:300/)).
