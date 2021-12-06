@@ -117,6 +117,7 @@ function App() {
             </select>
           </div>
         </div>
+        <div className="table-responsive">
         <table className="table table-striped">
           <thead>
             <tr className="">
@@ -135,6 +136,7 @@ function App() {
             ))}
           </tbody>
         </table>
+        </div>
       </div>
     </>
   );
