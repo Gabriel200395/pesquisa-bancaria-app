@@ -1,7 +1,7 @@
 <h1 align="center">App de Pesquisa Bancaria</h1>  
 
 <h4 align="center">
-  <img src="./public/img/jogos_loterias.gif"/><br>
+  <img src="./public/img/app-bancaria.gif"/><br>
 </h4>
 
 <p align="center">
@@ -23,10 +23,18 @@
 - Clone o projeto: `git clone https://github.com/Gabriel200395/pesquisa-bancaria-app.git`
 - Entrar na pasta do projeto: `cd pesquisa-bancaria-app`
 - Iniciar a aplicação: `yarn start`
-- baixe na aplicação:  `yarn install`
+- baixe na aplicação:  `yarn install` 
+- Irá abrir uma página no browser (se não abrir, vá até [http://localhost:3000](http://localhost:300/)).
 
 
-Irá abrir uma página no browser (se não abrir, vá até [http://localhost:3000](http://localhost:300/)).
+## 💻 Teste unitario app
+
+<h4 align="center">
+  <img src="./public/img/teste-app.gif"/><br>
+</h4>
+
+
+
 
 
 
