@@ -90,7 +90,7 @@ function App() {
       </nav>
       <div className="container">
         <div className="row mb-5">
-          <div className="col-lg-4 col-sm-12 mb-sm-4">
+          <div className="col-lg-4 col-sm-12  mb-4">
             <input
               type="text"
               className="form-control col-3 col-sm-12"
