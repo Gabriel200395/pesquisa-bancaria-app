@@ -2,7 +2,6 @@ import axios from "axios";
 import React from "react";
 import trasactionsProps from "./Interface/Interface";
 import { thArr, tdArr, selectOption } from "./Arrays/Arrays";
-import { couldStartTrivia } from "typescript";
 
 function App() {
   const [trasactions, setTrasactions] = React.useState<trasactionsProps[]>([]);
@@ -67,25 +66,24 @@ function App() {
   }
 
   React.useEffect(() => {
-    if (trasactionsFiltro.length == 0) {
+    if (trasactionsFiltro.length === 0) {
       setTrasactionsFiltro(trasactions);
     }
-    if (trasactionsFiltro.length == 21) {
+    if (trasactionsFiltro.length === 21) {
       setDisabled(true);
       setSelect("status");
     }
-    if (filtro && trasactionsFiltro.length == 21) {
-      setDisabled(false);
+    if (filtro && trasactionsFiltro.length === 21) {
+      setDisabled(true);
     }
-  }, [trasactionsFiltro]);
+  }, [trasactionsFiltro, filtro, trasactions]);
 
-  console.log(trasactionsFiltro);
 
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-light bg-light mb-5 py-4">
         <div className="container">
-          <a className="navbar-brand" href="#">
+          <a className="navbar-brand" href="/#">
             Tela Transações
           </a>
         </div>

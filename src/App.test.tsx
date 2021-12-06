@@ -31,8 +31,7 @@ describe("testando app", () => {
 
     const Select = screen.getByRole("combobox", {
       name: /select-status/,
-    }) as HTMLSelectElement; 
-
+    }) as HTMLSelectElement;
 
     expect(Input.value).toEqual("");
     expect(Select).toBeInTheDocument();
@@ -43,13 +42,12 @@ describe("testando app", () => {
       },
     });
 
-    expect(Input.value).toEqual("Resgate"); 
-    expect(Select).not.toHaveAttribute("disabled") 
+    expect(Input.value).toEqual("Resgate");
+    expect(Select).not.toHaveAttribute("disabled");
 
     fireEvent.change(Input, { target: { value: "resgated" } });
-    expect(Input.value).toEqual("resgated")
-    expect(Select).toHaveProperty("disabled")
-
+    expect(Input.value).toEqual("resgated");
+    expect(Select).toHaveProperty("disabled");
   });
 
   test("verificando requisicao", async () => {
@@ -63,7 +61,7 @@ describe("testando app", () => {
     );
   });
 
-  test("pesquisa title", async () => {
+  test("pesquisa bancaria", async () => {
     mockedAxios.get.mockImplementation(() =>
       Promise.resolve({ data: dataTransacao })
     );
@@ -76,17 +74,20 @@ describe("testando app", () => {
 
     const Select = screen.getByRole("combobox", {
       name: /select-status/,
-    }) as HTMLSelectElement; 
+    }) as HTMLSelectElement;
 
-   
     fireEvent.change(Input, { target: { value: "Resgate" } });
-    await waitFor(() => expect(screen.getByTestId("tr-transacao")).toHaveTextContent(dataTransacao[0].title));
-     
-    fireEvent.click(Select, { target: { value: "created" } })
-    await waitFor(() => expect(screen.getByTestId("tr-transacao")).toHaveTextContent(dataTransacao[0].status));
+    await waitFor(() =>
+      expect(screen.getByTestId("tr-transacao")).toHaveTextContent(
+        dataTransacao[0].title
+      )
+    );
 
+    fireEvent.click(Select, { target: { value: "created" } });
+    await waitFor(() =>
+      expect(screen.getByTestId("tr-transacao")).toHaveTextContent(
+        dataTransacao[0].status
+      )
+    );
   });
-
-
-
 });
