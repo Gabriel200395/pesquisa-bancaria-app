@@ -23,7 +23,9 @@
 - Clone o projeto: `git clone https://github.com/Gabriel200395/pesquisa-bancaria-app.git`
 - Entrar na pasta do projeto: `cd pesquisa-bancaria-app`
 - Iniciar a aplicação: `yarn start`
-- baixe na aplicação:  `yarn install`
+- baixe na aplicação:  `yarn install` 
+- Irá abrir uma página no browser (se não abrir, vá até [http://localhost:3000](http://localhost:300/)).
+
 
 ## 💻 Teste unitario app
 
@@ -33,7 +35,6 @@
 
 
 
-Irá abrir uma página no browser (se não abrir, vá até [http://localhost:3000](http://localhost:300/)).
 
 
 
