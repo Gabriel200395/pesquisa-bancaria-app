@@ -25,6 +25,13 @@
 - Iniciar a aplicação: `yarn start`
 - baixe na aplicação:  `yarn install`
 
+## 💻 Teste unitario app
+
+<h4 align="center">
+  <img src="./public/img/teste-app.gif"/><br>
+</h4>
+
+
 
 Irá abrir uma página no browser (se não abrir, vá até [http://localhost:3000](http://localhost:300/)).
 
